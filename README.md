@@ -1,70 +1,156 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# DynamicLibrary
 
-## Available Scripts
+**DynamicLibrary** is a React component library that provides customizable UI components: `Dropdown`, `Modal`, `Tabs`, `Datatable`, and `Accordion`. It also includes theme management using `useTheme` and `ThemeProvider` for switching between dark and light themes.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+Install the library via npm:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install dynamiclibrary
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Components
 
-### `npm test`
+### 1. Datatable
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A customizable data table component.
 
-### `npm run build`
+```jsx
+import { Datatable } from 'dynamiclibrary';
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<Datatable
+  userData={data}
+  CustomUserDataCard={MyCustomCardComponent}
+  CustomDataNavBar={CustomNavBarComponent}
+  MainDataNavBarStyle={{ backgroundColor: '#ddd' }}
+  UserDataCardsStyle={{ padding: '10px' }}
+/>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Props:**
+  - `userData`: Data to display.
+  - `CustomUserDataCard`: Component for custom user data card.
+  - `CustomDataNavBar`: Component for custom navigation bar.
+  - `MainDataNavBarStyle`: Styles for the main navigation bar.
+  - `UserDataCardsStyle`: Styles for the user data cards.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Accordion
 
-### `npm run eject`
+A customizable accordion component.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```jsx
+import { Accordion } from 'dynamiclibrary';
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<Accordion
+  accordianQuestions={questions}
+  accordianMainStyle={{ margin: '10px' }}
+  accordianQuestionStyle={{ fontWeight: 'bold' }}
+  accordianQuestionTextStyle={{ color: 'blue' }}
+  accordianAnswerStyle={{ color: 'gray' }}
+/>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Props:**
+  - `accordianQuestions`: Array of questions and answers.
+  - `accordianMainStyle`: Styles for the accordion container.
+  - `accordianQuestionStyle`: Styles for each question.
+  - `accordianQuestionTextStyle`: Styles for question text.
+  - `accordianAnswerStyle`: Styles for the answer.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Tabs
 
-## Learn More
+A customizable tabs component.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```jsx
+import { Tabs } from 'dynamiclibrary';
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<Tabs
+  tabContents={contents}
+  CustomTabButtons={MyTabButtonsComponent}
+  CustomContentContainer={MyContentContainerComponent}
+/>
+```
 
-### Code Splitting
+- **Props:**
+  - `tabContents`: Array of tab contents.
+  - `CustomTabButtons`: Custom component for rendering tab buttons.
+  - `CustomContentContainer`: Custom component for content container.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 4. Dropdown
 
-### Analyzing the Bundle Size
+A customizable dropdown component.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```jsx
+import { Dropdown } from 'dynamiclibrary';
 
-### Making a Progressive Web App
+<Dropdown
+  showDropdown={true}
+  links={['Home', 'About', 'Contact']}
+  dropDownContainerStyle={{ backgroundColor: 'lightgray' }}
+  dropDownListStyle={{ padding: '5px' }}
+  dropDownLinkStyle={{ color: 'black' }}
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Props:**
+  - `showDropdown`: Boolean to show/hide dropdown.
+  - `links`: Array of dropdown links.
+  - `dropDownContainerStyle`: Styles for dropdown container.
+  - `dropDownListStyle`: Styles for the list.
+  - `dropDownLinkStyle`: Styles for individual links.
 
-### Advanced Configuration
+### 5. Modal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+A customizable modal component.
 
-### Deployment
+```jsx
+import { Modal } from 'dynamiclibrary';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<Modal
+  showModal={true}
+  setShowModal={setShowModal}
+  title="Confirm Action"
+  description="Are you sure you want to proceed?"
+  onCancelPress={handleCancel}
+  onProceedPress={handleProceed}
+  TitleStyle={{ fontWeight: 'bold' }}
+  DescStyle={{ fontSize: '14px' }}
+  CancelButtonStyle={{ backgroundColor: 'red' }}
+  ProceedButtonStyle={{ backgroundColor: 'green' }}
+/>
+```
 
-### `npm run build` fails to minify
+- **Props:**
+  - `showModal`: Boolean to show/hide modal.
+  - `setShowModal`: Function to toggle modal visibility.
+  - `title`: Modal title.
+  - `description`: Modal description.
+  - `onCancelPress`: Function for cancel button.
+  - `onProceedPress`: Function for proceed button.
+  - `TitleStyle`: Styles for the title.
+  - `DescStyle`: Styles for the description.
+  - `CancelButtonStyle`: Styles for cancel button.
+  - `ProceedButtonStyle`: Styles for proceed button.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Theme Management
+
+Use `useTheme` and `ThemeProvider` to toggle between light and dark themes.
+
+```jsx
+import { ThemeProvider, useTheme } from 'dynamiclibrary';
+
+<ThemeProvider>
+  <App />
+</ThemeProvider>;
+
+const { theme, toggleTheme } = useTheme();
+
+<button onClick={toggleTheme}>
+  Switch to {theme === 'dark' ? 'Light' : 'Dark'} Theme
+</button>;
+```
+
+- `useTheme`: Hook to access and toggle the theme.
+- `ThemeProvider`: Wrap your app with this to enable theme functionality.
